@@ -1,0 +1,7 @@
+EDK2_BUILD_RELEASE = "0"
+EDK2_PLATFORM      = "ArmVirtQemu"
+EDK2_PLATFORM_DSC  = "ArmVirtPkg/ArmVirtQemu.dsc"
+EDK2_BIN_NAME      = "QEMU_AARCH64_EFI.fd"
+EDK2_ARCH          = "AARCH64"
+
+COMPATIBLE_MACHINE = "qemuarm64-efi"

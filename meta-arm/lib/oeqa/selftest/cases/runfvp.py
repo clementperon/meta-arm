@@ -108,7 +108,7 @@ class RunnerTests(OESelftestTestCase):
                 stderr=unittest.mock.ANY,
                 env={"FOO":"BAR"})
 
-    @unittest.mock.patch.dict(os.environ, {"DISPLAY": ":42", "WAYLAND_DISPLAY": "wayland-42"})
+    @unittest.mock.patch.dict(os.environ, {"DISPLAY": ":42", "WAYLAND_DISPLAY": "wayland-42", "PATH": "/path-42:/usr/sbin:/usr/bin:/sbin:/bin"})
     def test_env_passthrough(self):
         from fvp import runner
         with self.create_mock() as m:
@@ -128,4 +128,4 @@ class RunnerTests(OESelftestTestCase):
                 stdin=unittest.mock.ANY,
                 stdout=unittest.mock.ANY,
                 stderr=unittest.mock.ANY,
-                env={"DISPLAY":":42", "FOO": "BAR", "WAYLAND_DISPLAY": "wayland-42"})
+                env={"DISPLAY":":42", "FOO": "BAR", "WAYLAND_DISPLAY": "wayland-42", "PATH": "/path-42:/usr/sbin:/usr/bin:/sbin:/bin"})

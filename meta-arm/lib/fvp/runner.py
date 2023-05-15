@@ -6,7 +6,7 @@ import shutil
 import sys
 
 from .terminal import terminals
-
+import .conffile
 
 def cli_from_config(config, terminal_choice):
     cli = []
@@ -84,7 +84,10 @@ class FVPRunner:
         self._telnets = []
         self._pexpects = []
 
-    def start(self, config, extra_args=[], terminal_choice="none", stdout=subprocess.PIPE):
+    def start(self, fvpconf, extra_args=[], terminal_choice="none", stdout=subprocess.PIPE):
+        self._logger.debug(f"Loading {fvpconf}")
+        config = conffile.load(fvpconf)
+
         cli = cli_from_config(config, terminal_choice)
         cli += extra_args
 
@@ -139,6 +142,9 @@ class FVPRunner:
 
     def wait(self, timeout):
         self._fvp_process.wait(timeout)
+
+    def getConfig(self):
+        return self._config
 
     @property
     def stdout(self):
